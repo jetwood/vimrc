@@ -1,5 +1,68 @@
 " Version 1.00.200302
 
+" -------
+" *Vundle
+" -------
+" Quick Start
+
+" 1. Introduction
+" Installation requires Git and trigger git clone for each configured repository to ~/.vim/bundle/ by default. Curl is required for search.
+
+" 2. Set up Vundle
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+" 3.Confure Plugins:
+" Put this at the top of your .vimrc to use Vundle. Remove plugins you don't need, they are for illustration purposes.
+
+:set nocompatible	" be improved, required
+":filetype off	" required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+" All of your Plugins must be added before the following line
+" required
+call vundle#end()	" required
+filetype plugin indent on	" required
+" To ignore plugin indent changes, instead use:
+" filetype plugin on
+"
+" Brief help
+" :PluginList		- lists configured plugins
+" :PluginInstall	- installs plugins; append '!' to update or just :
+" PluginUndate
+" :PluginSearch foo	- search for foo; to refresh local cache
+" :PluginClean		- confirm removal of unused plugins; append '!' to
+" auto-approve remove
+"
+" see :h vundle for more detail or wiki for FAQ
+" Put your non-Plugin stuff after this line
+" 
+" 4. Install Plugins:
+" Launch vim and run :PluginInstall
+" To install from command line: vim +PluginInstall +qall
+" 
+" 5. (optional)For those using the fish shell: add set shell=/bin/bash to your .vimrc
+
+" -------------------
+" Plugin vim_markdown
+" -------------------
+let g:vim_markdown_folding_disable=1
+let g:vim_markdown_override_foldtext=0
+let g:vim_markdown_folding_level=6
+let g:vim_markdown_no_default_key_mappings=1
+let g:vim_markdown_emphasis_multiline=0
+set conceallevel=2
+let g:vim_markdown_frontmatter=1
+
 " ------
 " *Color
 " ------
