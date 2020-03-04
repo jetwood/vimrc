@@ -1,4 +1,4 @@
-" Version 1.00.200302
+" Version 1.00.200304
 
 " -------
 " *Vundle
@@ -15,7 +15,7 @@
 " Put this at the top of your .vimrc to use Vundle. Remove plugins you don't need, they are for illustration purposes.
 
 :set nocompatible	" be improved, required
-":filetype off	" required
+:filetype off	" required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -31,9 +31,9 @@ Plugin 'plasticboy/vim-markdown'
 " All of your Plugins must be added before the following line
 " required
 call vundle#end()	" required
-filetype plugin indent on	" required
+"filetype plugin indent on	" required
 " To ignore plugin indent changes, instead use:
-" filetype plugin on
+filetype plugin on
 "
 " Brief help
 " :PluginList		- lists configured plugins
@@ -131,6 +131,10 @@ vmap <C-c> "+y
 :set shiftwidth=4
 
 
+" display tab as '>-', display space '.'
+:setlocal list
+:set listchars=tab:>-,space:.
+
 " -Use spaces instead of tabs
 ":set expandtab
 
@@ -173,7 +177,10 @@ vmap <C-c> "+y
 
 
 " -Use spaces instead of tabs when edit a python file
-autocmd FileType python set expandtab
+autocmd FileType python :set expandtab
+" -The key to save file
+autocmd FileType python map <F2> :w!<CR>
 
-" The key to run python program
-autocmd FileType python map <F12>:!python3 %<CR>
+" -The key to run python program
+autocmd FileType python map <F12> :w!<CR>:!python3 %<CR>
+
