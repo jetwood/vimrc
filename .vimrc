@@ -1,10 +1,9 @@
-" Version 1.00.200304
+" Version 1.00.200308
 
 " -------
 " *Vundle
 " -------
 " Quick Start
-
 " 1. Introduction
 " Installation requires Git and trigger git clone for each configured repository to ~/.vim/bundle/ by default. Curl is required for search.
 
@@ -70,11 +69,21 @@ let g:vim_markdown_frontmatter=1
 " scheme:blue,delek,evening,murphy,torte,darkblue,desert,koehler,pablo,ron,zellner,default,elflord,mornig,peachpuff,shine
 " git clone https://github.com/morhetz/gruvbox.git ~./vim/pack/default/start/grubox
 " background value:dark or light 
-:colorscheme gruvbox
+:colorscheme
 :set background=dark
 
+
+" ---------------
+" *Common variable
+" ---------------
+
+" -------------
+" *Auto KeyWord
+" -------------
+iab xtime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
+"
 " -----
-" Mouse
+" *Mouse
 " -----
 
 " mouse enable
@@ -83,13 +92,18 @@ let g:vim_markdown_frontmatter=1
 :set selectmode=mouse,key
 
 
-" -----------
-" key mapping
-" -----------
+" ------------
+" *Key mapping
+" ------------
+:nmap <F2> :Vex <CR> :vertical resize 20 <CR>
 
-" use CTRL+C copy the text selected
-vmap <C-c> "+y
 
+" ----------
+" *File Tree
+" ----------
+:let g:netrw_liststyle=3
+:let g:netrw_banner=0
+:let g:netrw_browse_split=1
 
 " --------------
 " *Spell & Check
@@ -175,12 +189,25 @@ vmap <C-c> "+y
 " *FILE:PYTHON
 " ------------
 
+" -Auto loading template
+autocmd BufNewFile *.py 0 r ~/.vim/template/temp.py
 
 " -Use spaces instead of tabs when edit a python file
 autocmd FileType python :set expandtab
-" -The key to save file
-autocmd FileType python map <F2> :w!<CR>
 
 " -The key to run python program
-autocmd FileType python map <F12> :w!<CR>:!python3 %<CR>
+autocmd FileType python map <F6> :w!<CR>:!python3 %<CR>
 
+
+" -------
+" *FILE:C
+" -------
+
+" -Auto loading template
+autocmd BufNewFile *.c 0 r ~/.vim/template/temp.c
+
+" -The key to compile c files
+autocmd FileType c map <F5> :w!<CR>:!make<CR>
+
+" -The key to run program
+autocmd FileType c map <F6> :./exec.out<CR>
