@@ -69,7 +69,7 @@ let g:vim_markdown_frontmatter=1
 " scheme:blue,delek,evening,murphy,torte,darkblue,desert,koehler,pablo,ron,zellner,default,elflord,mornig,peachpuff,shine
 " git clone https://github.com/morhetz/gruvbox.git ~./vim/pack/default/start/grubox
 " background value:dark or light 
-:colorscheme
+:colorscheme gruvbox
 :set background=dark
 
 
@@ -95,7 +95,7 @@ iab xtime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
 " ------------
 " *Key mapping
 " ------------
-:nmap <F2> :Vex <CR> :vertical resize 20 <CR>
+:nmap <F1> :Vex <CR> :vertical resize 20 <CR>
 
 
 " ----------
