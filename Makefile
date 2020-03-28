@@ -31,6 +31,7 @@ else
 endif
 
 	cp ./.vimrc ~/
+	cp ./.bashrc ~/
 uninstall:
 	rm -rf $(VUNDLE)
 	rm -rf $(GRUVBOX)
