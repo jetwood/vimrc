@@ -1,4 +1,4 @@
-" Version 1.00.200308
+" VERSION 1.00.200308
 
 " -------
 " *Vundle
@@ -95,8 +95,37 @@ iab xtime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
 " ------------
 " *Key mapping
 " ------------
+
+
+" foldlevel
+:nmap fl1 :set foldlevel=1 <CR>
+:nmap fl2 :set foldlevel=2 <CR>
+:nmap fl3 :set foldlevel=3 <CR>
+:nmap fl4 :set foldlevel=4 <CR>
+:nmap fl5 :set foldlevel=5 <CR>
+:nmap fl6 :set foldlevel=6 <CR>
+:nmap fl0 :set foldlevel=99 <CR>
+
+
+" SideMenu
 :nmap <F1> :Vex <CR> :vertical resize 20 <CR>
 
+
+" Compile and Run
+:map <F5> :call CompileRun() <CR>
+
+func! CompileRun()
+	exec "w"
+	if &filetype == 'c'
+		exec "!gcc % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'cpp'
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'python'
+		exec ":!time python3 %"
+	endif
+endfunc
 
 " ----------
 " *File Tree
@@ -160,6 +189,8 @@ iab xtime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
 " -Show line number
 :set number
 
+" highlight currect line
+autocmd InsertLeave * se cul
 
 " -To wrap text when it crosses the maximum line width
 :set textwidth=80
@@ -195,9 +226,6 @@ autocmd BufNewFile *.py 0 r ~/.vim/template/temp.py
 " -Use spaces instead of tabs when edit a python file
 autocmd FileType python :set expandtab
 
-" -The key to run python program
-autocmd FileType python map <F6> :w!<CR>:!python3 %<CR>
-
 
 " -------
 " *FILE:C
@@ -206,8 +234,6 @@ autocmd FileType python map <F6> :w!<CR>:!python3 %<CR>
 " -Auto loading template
 autocmd BufNewFile *.c 0 r ~/.vim/template/temp.c
 
-" -The key to compile c files
-autocmd FileType c map <F5> :w!<CR>:!make<CR>
-
-" -The key to run program
-autocmd FileType c map <F6> :./exec.out<CR>
+" -folding by marker
+autocmd FileType c :set foldmethod=marker
+autocmd FileType c :set foldlevel=0
