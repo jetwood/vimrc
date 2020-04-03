@@ -96,6 +96,20 @@ iab xtime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
 " *Key mapping
 " ------------
 :nmap <F1> :Vex <CR> :vertical resize 20 <CR>
+:map <F5> : call CompileRun()<CR>
+
+func CompileRun()
+	exec "w"
+	if &filetype == 'c'
+		exec "!gcc % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'cpp'
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'python'
+		exec "!python3 %"
+	endif
+endfunc
 
 
 " ----------
@@ -160,6 +174,8 @@ iab xtime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
 " -Show line number
 :set number
 
+" -Show filename in bottom bar."
+:set laststatus=2
 
 " -To wrap text when it crosses the maximum line width
 :set textwidth=80
@@ -195,9 +211,6 @@ autocmd BufNewFile *.py 0 r ~/.vim/template/temp.py
 " -Use spaces instead of tabs when edit a python file
 autocmd FileType python :set expandtab
 
-" -The key to run python program
-autocmd FileType python map <F6> :w!<CR>:!python3 %<CR>
-
 
 " -------
 " *FILE:C
@@ -205,9 +218,5 @@ autocmd FileType python map <F6> :w!<CR>:!python3 %<CR>
 
 " -Auto loading template
 autocmd BufNewFile *.c 0 r ~/.vim/template/temp.c
-
-" -The key to compile c files
-autocmd FileType c map <F5> :w!<CR>:!make<CR>
-
-" -The key to run program
-autocmd FileType c map <F6> :./exec.out<CR>
+autocmd FileType c :set foldmethod=marker
+autocmd FileType c :set foldlevel=0
