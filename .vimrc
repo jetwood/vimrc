@@ -1,4 +1,4 @@
-" VERSION 1.00.200308
+" VERSION 1.02.200407
 
 " -------
 " *Vundle
@@ -241,3 +241,11 @@ autocmd BufNewFile *.c 0 r ~/.vim/template/temp.c
 autocmd FileType c :set foldmethod=marker
 autocmd FileType c :set foldlevel=0
 
+" ---------
+" *FILE:CPP
+" ---------
+
+" -Auto loafing template
+autocmd BufNewFile *.cpp 0 r ~/.vim/template/temp.cpp
+autocmd FileType cpp :set foldmethod=marker
+autocmd FIleType cpp :set foldlevel=0
