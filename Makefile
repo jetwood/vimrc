@@ -23,13 +23,7 @@ else
 	git clone $(GRUVBOX_HTTP) $(GRUVBOX)
 endif
 
-	@echo $(temp_exist)
-ifeq ($(temp_exist),exist)
-	@echo Warnning: $(TEMP) exist!
-else
-	cp -r template ~/.vim/
-endif
-
+	cp -rf template ~/.vim/
 	cp ./.vimrc ~/
 	cp ./.bashrc ~/
 uninstall:

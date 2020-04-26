@@ -159,7 +159,7 @@ endfunc
 " -------------------
 
 " -To automatically align the indentation of a line in a file
-":set autoindent
+:set autoindent
 
 
 " -Smart indent uses the code syntax and style to align
@@ -245,7 +245,13 @@ autocmd FileType c :set foldlevel=0
 " *FILE:CPP
 " ---------
 
-" -Auto loafing template
+" -Auto loading template
 autocmd BufNewFile *.cpp 0 r ~/.vim/template/temp.cpp
 autocmd FileType cpp :set foldmethod=marker
 autocmd FIleType cpp :set foldlevel=0
+" -------
+" *FILE:H
+" -------
+
+" -Auto loading template
+autocmd BufNewFile *.h 0 r ~/.vim/template/temp.h
